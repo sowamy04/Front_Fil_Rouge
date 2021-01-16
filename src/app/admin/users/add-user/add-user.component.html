@@ -1,0 +1,55 @@
+<div class="shadow p-3 mb-5 bg-white rounded border mt-4" style="border: 3px solid rgba(224, 217, 217, 0.925);" [ngClass]="{animationOut:!userService.isOpen}">
+  <button (click)="cacher()" class="btn my-4 btn-block col-md-4 float-right" style="border:1px border #079480;" type="button">Cacher</button>
+  <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" class="text-center border border-light p-5" novalidate>
+
+    <p class="h4 mb-4" style="font-size:400%; font-weight:bolder;">Inscription</p>
+
+    <div class="rounded-circle center d-flex justify-content-center">
+      <img src="assets/images/connexion.png" class="rounded-circle" width="130" height="130" alt="" style="margin-bottom: 2%;">
+    </div>
+
+    <div class="form-row mb-4">
+      <div class="col">
+          <input type="text" ngModel required pattern="^[a-zA-Z]+$" name="prenom" #prenom="ngModel" id="firstname" class="form-control" placeholder="Prénom">
+          <div *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)" class="alert alert-danger"> Le prénom est requis </div>
+        </div>
+      <div class="col">
+          <input type="text" ngModel required pattern="^[a-zA-Z]+$" name="nom" #nom="ngModel" id="lastname" class="form-control" placeholder="Nom">
+          <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="alert alert-danger"> Le nom est requis </div>
+      </div>
+    </div>
+
+    <input type="email" id="email" ngModel required email name="email" #email="ngModel" class="form-control mb-4" placeholder="E-mail">
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger"> L'email est requis </div>
+
+    <div class="form-row mb-4">
+      <div class="col">
+          <input type="password" ngModel required minlength="6" name="password" #password="ngModel" id="password" class="form-control" placeholder="Mot de passe">
+          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger"> Le mot de passe est requis </div>
+      </div>
+    </div>
+
+    <input type="text" id="phone" ngModel required pattern="#^7{7|6|5|0}[0-9]{7}" name="telephone" #telephone="ngModel" class="form-control mb-4" placeholder="Numéro de téléphone">
+    <div *ngIf="telephone.invalid && (telephone.dirty || telephone.touched)" class="alert alert-danger"> Le numéro de téléphone est requis </div>
+
+    <div class="input-group">
+      <select ngModel required name="profil" #profil="ngModel" id="profil" class="custom-select form-control" id="inputGroupSelect04">
+        <option value="1">Admin</option>
+        <option value="2">Formateur</option>
+        <option value="3">Community Manager</option>
+      </select>
+    </div> <br>
+    <div *ngIf="profil.invalid && (profil.dirty || profil.touched)" class="alert alert-danger"> Le profil est requis </div>
+
+    <div class="form-row mb-1">
+      <label class="btn btn-default text-white" style="background-color: #079480;">
+        Choisir une photo <input type="file" name="photo" (change)="uploadFile($event)" #UploadFileInput hidden>
+    </label>
+    </div>
+    <br>
+      <div class="row shadow bg-white rounded">
+        <button class="btn my-3 btn-block col-md-4 float-left text-white " style="background-color: red; margin-right: 6%; margin-left:10%" type="reset">Réinitialiser</button>
+        <button class="btn my-3 btn-block col-md-4 float-right text-white" style="background-color: #079480; margin-left:6%;" type="submit">Inscription</button>
+      </div>
+  </form>
+</div>

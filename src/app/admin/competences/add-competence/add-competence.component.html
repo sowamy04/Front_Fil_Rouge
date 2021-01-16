@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-md-12 justify-content-center align-items-center" style="margin:1%; margin-top: 1%;">
+    <form [formGroup]="competenceForm" (ngSubmit)="onSubmit()" class="">
+        <p class="h4 mb-4" style="font-size:100%; font-weight:bolder;">Nouvelle Compétence</p>
+        <div class="row">
+          <input type="text" formControlName="libelle" id="libelle" class="form-control form-group" placeholder="Libellé">
+        </div>
+        <fieldset class="scheduler-border">
+          <legend class="scheduler-border"> Niveau 1</legend>
+          <div class="row">
+            <input type="text" formControlName="libelleNiv1" id="libelleNiv1" class="form-control form-group" placeholder="Libellé">
+          </div>
+          <div class="row">
+            <input type="text" formControlName="ce1" id="ce1" class="form-control form-group" placeholder="Critère Evaluation">
+          </div>
+          <div class="row">
+            <input type="text" formControlName="ga1" id="ga1" class="form-control form-group" placeholder="Groupe d'action">
+          </div>
+        </fieldset>
+        <fieldset class="scheduler-border">
+          <legend class="scheduler-border"> Niveau 2</legend>
+          <div class="row">
+            <input type="text" formControlName="libelleNiv2" id="libelleNiv2" class="form-control form-group" placeholder="Libellé">
+          </div>
+          <div class="row">
+            <input type="text" formControlName="ce2" id="ce2" class="form-control form-group" placeholder="Critère Evaluation">
+          </div>
+          <div class="row">
+            <input type="text" formControlName="ga2" id="ga2" class="form-control form-group" placeholder="Groupe d'action">
+          </div>
+        </fieldset>
+        <fieldset class="scheduler-border">
+          <legend class="scheduler-border"> Niveau 3</legend>
+          <div class="row">
+            <input type="text" formControlName="libelleNiv3" id="libelleNiv3" class="form-control form-group" placeholder="Libellé">
+          </div>
+          <div class="row">
+            <input type="text" formControlName="ce3" id="ce3" class="form-control form-group" placeholder="Critère Evaluation">
+          </div>
+          <div class="row">
+            <input type="text" formControlName="ga3" id="ga3" class="form-control form-group" placeholder="Groupe d'action">
+          </div>
+        </fieldset>
+      <button class="btn col-md-3 form-group d-flex justify-content-center" style="background-color: #079480;" type="submit">Ajouter</button>
+    </form>
+
+  </div>
+</div>

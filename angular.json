@@ -28,7 +28,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/custom-theme.scss",
+              "src/styles.css",
+              "./node_modules/sweetalert2/src/sweetalert2.scss"
             ],
             "scripts": []
           },
@@ -124,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "SA-Fil-Rouge"
+  "defaultProject": "SA-Fil-Rouge",
+  "cli": {
+    "analytics": "86ca01cf-6668-4af4-abfe-4a4d37bb6d1b"
+  }
 }

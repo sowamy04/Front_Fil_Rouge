@@ -1,3 +1,5 @@
+import { GenerationTokenService } from './services/generation-token.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Component } from '@angular/core';
 
 @Component({

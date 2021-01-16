@@ -1,0 +1,23 @@
+<div style="margin: 3%;">
+  <input type="button" class=" btn bg-white" value="cacher" (click)="cacher()"/>
+  <div class="justify-content-center align-items-center shadow p-3 mb-5 bg-white rounded border mt-4" style="margin:1%; border: 3px solid rgba(224, 217, 217, 0.925); margin-top: 1%;">
+    <form [formGroup]="groupeCompetenceForm" (ngSubmit)="onSubmit()">
+        <p class="h4 mb-4 row" style="font-size:100%; font-weight:bolder;">Nouveau Groupe Compétence</p>
+          <div class="row form-group">
+            <label for="" class="col-md-3"> Libellé</label>
+            <input type="text" formControlName="libelle" id="libelle" class="form-control col-md-7">
+          </div>
+          <div class="row">
+            <label for="" class="col-md-3"> Compétences</label>
+            <select class="form-groupe form-control col-md-7">
+              <option value="1">HTML</option>
+              <option value="2">CSS</option>
+              <option value="3">Angular</option>
+             </select>
+          </div>
+          <br><br>
+      <button class="btn col-md-3 d-flex justify-content-center" style="background-color: #079480; margin-left: 20%;" type="submit">Ajouter</button>
+    <br>
+    </form>
+  </div>
+</div>

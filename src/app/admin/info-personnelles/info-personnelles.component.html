@@ -1,0 +1,49 @@
+<div style="border: 3px solid rgba(224, 217, 217, 0.925); margin-right : 20%; margin-left : 20%; ">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="text-center border border-light p-5">
+
+    <p class="h4 mb-4" style="font-size:400%; font-weight:bolder;">Informations Personnelles</p>
+
+    <div class="rounded-circle center d-flex justify-content-center" >
+      <img src="assets/images/connexion.png" class="rounded-circle" width="130" height="130" alt="" style="margin-bottom: 2%;">
+    </div>
+
+
+        <div class="row">
+          <label for="" class="col-md-3"> Prénom </label>
+            <input type="text" formControlName="prenom" id="firstname" class="form-control mb-4 col-md-7" value="Admin" [readOnly]="readOnly">
+        </div>
+
+        <div class="row">
+          <label for="" class="col-md-3"> Nom</label>
+            <input type="text" formControlName="nom" id="lastname" class="form-control mb-4 col-md-7" value="Admin" [readOnly]="readOnly">
+        </div>
+
+
+        <div class="row">
+          <label for="" class="col-md-3"> Email</label>
+          <input type="email" formControlName="email" id="email" class="form-control mb-4 col-md-7" value="admin@gmail.com" [readOnly]="readOnly">
+        </div>
+
+          <div class="row">
+            <label for="" class="col-md-3"> Mot de passe</label>
+              <input type="password" formControlName="password" id="password" class="form-control mb-4 col-md-7" value="passer" [readOnly]="readOnly">
+          </div>
+
+
+        <div class="row">
+          <label for="" class="col-md-3"> Téléphone </label>
+          <input type="text" formControlName="telephone" id="phone" class="form-control mb-4 col-md-7" value="77-777-77-77" [readOnly]="readOnly">
+        </div>
+        <div class="input-group row">
+          <label for="" class="col-md-3"> Profil </label>
+          <input type="text" formControlName="profil" id="profil" class="form-control mb-4 col-md-7" value="Admin" readonly>
+        </div>
+        <div row class="w-50 justify-content-center" style="margin-left: 30%;">
+          <button (click)="retour()" class="btn my-4 btn-block col-md-3 bg-primary float-left" type="button">Retour</button>
+          <button class="btn my-4 btn-block col-md-3 float-right" style="background-color: #079480;" type="submit" (click)="onSubmit()">Modifier</button>
+        </div>
+        <hr>
+
+  </form>
+
+</div>

@@ -1,0 +1,24 @@
+<div class="row justify-content-center">
+  <div style="padding: 3%;" class="col-md-9 shadow p-3 mb-5 bg-white rounded border mt-4">
+    <table class="table table-striped" style="border: 2px solid rgb(212, 208, 208);">
+      <thead>
+        <tr>
+          <th scope="col"># </th>
+          <th scope="col">Libellé</th>
+          <th scope="col"> Détails </th>
+          <th scope="col"> Supprimer </th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let profil of profilSortiesData">
+        <tr>
+          <td scope="row">{{profil.id}}</td>
+          <td>{{profil.libelle}}</td>
+          <td> <button class="btn btn-success btn-sm rounded-0 " type="button" data-toggle="tooltip" data-placement="top" title="Détail"><i class="fa fa-table"></i></button></td>
+          <td> <button class="btn btn-danger btn-sm rounded-0 " type="button" data-toggle="tooltip" data-placement="top" title="Supprimer"><i class="fa fa-trash"></i></button></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>

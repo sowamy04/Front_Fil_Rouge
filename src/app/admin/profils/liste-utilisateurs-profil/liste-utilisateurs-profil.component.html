@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="container shadow p-3 mb-5 bg-white rounded border mt-4" style="margin-top: 35px; width:100%">
+
+      <table id="mytable" class="table table-bordered table-striped w-100" style="border: 2px solid rgb(212, 208, 208);">
+        <thead>
+          <tr>
+            <th> Photo </th>
+            <th> Nom </th>
+            <th> Prénom </th>
+            <th> Email </th>
+            <th> Téléphone </th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let user of data.users">
+          <tr>
+            <td> <img src="data:image/jpg;base64,{{user.photo}}" width="25" alt=""> </td>
+            <td> {{user.prenom}} </td>
+            <td> {{user.nom}} </td>
+            <td> {{user.email}} </td>
+            <td> {{user.telephone}} </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="pagination-container ">
+        <nav>
+          <ul class="pagination"></ul>
+        </nav>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+

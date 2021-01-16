@@ -1,0 +1,53 @@
+<div>
+<div class="bs-example">
+  <nav class="navbar navbar-expand-md navbar-light bgColor">
+      <a class="navbar-brand">
+          <img routerLink="profils" src="assets/images/logo_sa.png" height="75" alt="CoolBrand">
+      </a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav">
+              <a routerLink="profils" class="btn nav-item nav-link">Profils</a>
+              <div class="dropdown show">
+                <a class="btn dropdown-toggle" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Utlisateurs
+                </a>
+                <div class="dropdown-menu" style="background-color: #079480;" aria-labelledby="dropdownMenuLink1">
+                  <a routerLink="users" class="dropdown-item">Users</a>
+                  <a routerLink="apprenants" class="dropdown-item">Apprenant</a>
+                </div>
+              </div>
+              <a routerLink="profil-sorties" class="btn nav-item nav-link">Profils de sortie</a>
+              <div class="dropdown show">
+                <a class="btn dropdown-toggle" role="button" id="dropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Paramètres
+                </a>
+                <div class="dropdown-menu" style="background-color: #079480;" aria-labelledby="dropdownMenuLink2">
+                  <a routerLink="competences" class="dropdown-item">Compétences</a>
+                  <a routerLink="groupe-competences" class="dropdown-item">Groupes de compétences</a>
+                  <a routerLink="promos" class="dropdown-item">Promos</a>
+                  <a routerLink="referentiels" class="dropdown-item">Référentiels</a>
+                </div>
+              </div>
+            </div>
+            <div class="navbar-nav ml-auto" style="margin-right: 2%;">
+              <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+            </div>
+          <div>
+            <img class="img-circle img-rounded float-left" src="assets/images/logo_sa.png" height="40" alt="CoolBrand">
+            <a routerLink="info-personnelles" class="btn nav-item nav-link" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Admin
+            </a>
+          </div>
+          <a (click)="deconnexion()" class="btn nav-item nav-link">Se déconnecter</a>
+      </div>
+  </nav>
+</div>
+
+<div>
+  <router-outlet> </router-outlet>
+</div>
+
+</div>

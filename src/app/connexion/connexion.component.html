@@ -1,0 +1,43 @@
+
+
+<div class="limiter">
+  <div class="container-login100" style="background-image: url('assets/images/Sonatel-Academy.jpg');">
+    <div class="row" style="font-size: 30px; font-weight:bolder">
+      <p class="text-danger border "> {{ message }} </p>
+    </div>
+      <nav class="navbar navbar-light bg-green">
+        <img src="assets/images/logo.png"class="h-50 d-inline-block align-top img-fluid" alt="">
+        <h2 class="col-md-8 text-black-50 font-italic"> Coding for better life!</h2>
+      </nav>
+
+    <div class="wrap-login100 form" style="text-align:center;">
+      <mat-card>
+        <div class="rounded-circle center d-flex justify-content-center">
+        <img src="assets/images/connexion.png" class="rounded-circle" width="160" height="130" alt="">
+      </div>
+        <br>
+        <br>
+        <form name="loginForm" [formGroup]="loginForm" (ngSubmit)="onLogin()" fxLayoutAlign="stretch" fxLayout="column">
+          <mat-form-field class="example-full-width w-75" layout-align="center center">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput  placeholder="Entrer votre email"  formControlName="email" required>
+            <mat-error> L'email' est requis</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width w-75"> 
+            <mat-label>Mot de passe</mat-label>
+            <input type="password" matInput  placeholder="Entrer votre mot de passe" formControlName="password" required>
+            <mat-error > Le mot de passe est requis</mat-error>
+          </mat-form-field>
+          <br>
+          <button mat-flat-button class="w-50 bold" style="background-color: rgb(211, 121, 17)">Se connecter</button>
+
+        </form>
+      </mat-card>
+
+    </div>
+  </div>
+</div>
+<div>
+
+</div>

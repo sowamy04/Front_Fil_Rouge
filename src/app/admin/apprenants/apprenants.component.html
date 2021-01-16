@@ -1,0 +1,114 @@
+<div>
+
+  <div class="col-md-12">
+    <app-add-apprenant> </app-add-apprenant>
+  </div>
+
+<div class="container col-md-11 justify-content-center shadow p-3 mb-5 bg-white rounded border mt-4" style=" padding:1%">
+  <h4> Choisir le nombre de ligne à afficher</h4>
+  <div class="form-group row">
+    <select name="state" id="maxRows" class="form-control col-md-5" style="widows: 150px;">
+      <option value="5000">Tout voir</option>
+      <option value="5"> 5 </option>
+      <option value="10"> 10 </option>
+      <option value="15"> 15 </option>
+      <option value="20"> 20 </option>
+      <option value="50"> 50 </option>
+    </select>
+    <input routerLink="attente" type="button" class="btn btn-black col-md-3" style="margin-left: 3%;" value="Afficher les apprenants en attente"/>
+  </div>
+ <div class="row justify-content-center">
+  <div class="col-md-6">
+    <router-outlet> </router-outlet>
+  </div>
+ </div>
+  <table id="mytable" class="table table-bordered table-striped w-100 shadow p-3 mb-5 bg-white rounded border mt-4">
+    <thead>
+      <tr>
+        <th> N° </th>
+        <th> Nom </th>
+        <th> Prénom </th>
+        <th> Email </th>
+        <th> Téléphone </th>
+        <th>Actions </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let app of datasource">
+      <tr *ngIf="app.firstConnexion == 1 && app.statut == 1">
+        <td> {{app.id }} </td>
+        <td> {{app.prenom}} </td>
+        <td> {{app.nom}} </td>
+        <td> {{app.email}} </td>
+        <td> {{app.telephone}} </td>
+        <td>
+          <ul class="list-inline m-0  d-flex justify-content-center">
+            <li class="list-inline-item">
+                <button class="btn btn-primary btn-sm rounded-0 " type="button" data-toggle="tooltip" data-placement="top" title="Add"><i class="fa fa-table"></i></button>
+            </li>
+            <li class="list-inline-item">
+                <button class="btn btn-success btn-sm rounded-0 " type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
+            </li>
+            <li class="list-inline-item">
+                <button class="btn btn-danger btn-sm rounded-0 " type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+            </li>
+        </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="pagination-container ">
+    <nav>
+      <ul class="pagination"></ul>
+    </nav>
+  </div>
+</div>
+</div>
+
+<script>
+  var table = '#mytable'
+  $('#maxRows').on('change', function(){
+    $('pagination').html('')
+    var trnum = 0
+    var maxRows = parseInt($(this).val())
+    var totalRows = $(table+' tbody tr').length
+    $(table+' tr:gt(0 )').each(function(){
+      trnum++
+      if(trnum > maxRows){
+        $(this).hide()
+      }
+      if( trnum <= maxRows){
+        $(this).show()
+      }
+    })
+    if(totalRows <maxRows){
+      var pagenum = Math.ceil(totalRows/maxRows)
+      for( var i=1; i<=pagenum; ){
+        $('pagination').append('<li data-page="'+i+'">\<span>'+ i++ +'<span class="sr-only">(current)</span> </span>\</li>').show()
+      }
+    }
+    $('.pagination li:first-child').addClass('active')
+    $('.pagination li').on('click', function(){
+      var pageNum = $(this).attr('data-page')
+      var trIndex = 0
+      $('.pagination li').removeClass('active')
+      $(this).addClass('active')
+      $(table+' tr:gt(0 )').each(function(){
+        trIndex++
+        if (trIndex > (maxRows*pageNum) || trIndex <= ((maxRows*pageNum)- maxRows)){
+          $(this).hide()
+        }
+        else{
+          $(this).show()
+        }
+      })
+    })
+  })
+  $(function(){
+    $('table tr:eq(0 )').prepend('<th>ID</th>')
+    var id = 0 ;
+    $('table tr:gt(0 )').each(function(){
+      id++
+      $(this).prepend('<td>'+id+'</td>')
+    })
+  })
+</script>

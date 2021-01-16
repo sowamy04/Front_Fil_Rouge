@@ -1,0 +1,21 @@
+<div class="row shadow p-3 mb-5 bg-white rounded border mt-4">
+  <div class="col-md-7 justify-content-center align-items-center shadow p-3 mb-5 bg-white rounded border mt-4" style="margin:1%; border: 3px solid rgba(224, 217, 217, 0.925); margin-top: 1%;">
+
+    <form #apprenantForm="ngForm" (ngSubmit)="onSubmit(apprenantForm)" class="form-inline row" novalidate>
+        <p class="h4 mb-4 col-md-3" style="font-size:200%; font-weight:bolder;">Inscription</p>
+          <div class="col-md-3">
+            <input type="email" ngModel required name="email" #email="ngModel" id="email" class="form-control" placeholder="E-mail">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger"> Pour ajouter un apprenant, donnez l'email </div>
+          </div>
+      <button class="btn col-md-3" style="background-color: #079480;" type="submit">soumettre</button>
+    </form>
+  </div>
+
+  <div class="col-md-3 justify-content-center align-items-center shadow p-3 mb-5 bg-white rounded border mt-4" style="margin:2%; border : 3px solid rgba(224, 217, 217, 0.925); margin-top: 1%; margin-left:3%;">
+    <label class="btn btn-default mr-6" style="border:2px solid #079480;">
+      Choisir un fichier CSV <input type="file" accept=".csv" name="photo" (change)="handleFileSelect($event)" hidden>
+  </label>
+    <button type="submit" class="btn text-white" style="background-color: rgb(238, 128, 38);"> Ajouter</button>
+  </div>
+</div>
+

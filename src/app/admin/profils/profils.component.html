@@ -1,0 +1,38 @@
+<div class=" justify-content-center" style="padding: 3%;">
+  <div class="row justify-content-center shadow p-3 mb-5 bg-white rounded border mt-4">
+    <div class="col-md-8">
+      <table id="mytable" class="table table-striped w-100">
+        <thead>
+          <tr>
+            <th> N° </th>
+            <th> Libellé </th>
+            <th> Actions </th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let profil of profilsData">
+          <tr>
+            <td> {{profil.id}} </td>
+            <td> {{profil.libelle}} </td>
+            <td>
+              <ul class="list-inline m-0  d-flex justify-content-center">
+                <li class="list-inline-item">
+                  <button [routerLink]="[profil.id+'/users-profil']" class="btn btn-primary btn-sm rounded-0 " type="button" data-toggle="tooltip" data-placement="top" title="Add"><i class="fa fa-table"></i></button>
+                </li>
+                <li class="list-inline-item">
+                    <button (click)="supprimer()"  class="btn btn-danger btn-sm rounded-0 " type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                </li>
+            </ul>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+    </div>
+
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+
+</div>
