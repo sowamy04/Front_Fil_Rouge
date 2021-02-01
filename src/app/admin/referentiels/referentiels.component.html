@@ -1,36 +1,94 @@
 
-  <div style="padding: 3%;" class="row justify-content-center">
-    <div class="card text-black bg-white mb-3 col-md-3 shadow p-3 mb-5 bg-white rounded border mt-4" style="margin-right:1%;">
-      <div class="card-header" style="background-color: #079480;">Developpement Web et mobile</div>
-        <div class="card-body">
-          <h5 class="card-title">Description</h5>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam exercitationem quod voluptate sunt cum numquam, repudiandae reiciendis delectus, fugiat et voluptatibus id illo sint ipsam illum! Doloremque omnis odio unde?</p>
-          <p> Critère Evaluation</p>
-          <p> Critère Admission</p>
+<div style="padding: 3%;" class="row justify-content-center">
+  <div *ngFor="let ref of referentielsData; let i=index" class="card text-black bg-white mb-3 col-md-3 shadow p-3 mb-5 bg-white rounded border mt-4" style="margin-right:1%;">
+    <div class="card-header" style="background-color: #079480;"> {{i+1}} {{ref.libelle}}</div>
+      <div class="card-body">
+        <div id="accordion">
+          <div class="card" style="padding: 1%;">
+            <div class="card-header" id="headingTwo">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#presentation" aria-expanded="false" aria-controls="description">
+                  Présentation
+                </button>
+              </h5>
+            </div>
+            <div id="presentation" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body">
+                <p> {{ref.presentation}} </p>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <div id="accordion">
+          <div class="card" style="padding: 1%;">
+            <div class="card-header" id="headingTwo">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#programme" aria-expanded="false" aria-controls="description">
+                  Programme
+                </button>
+              </h5>
+            </div>
+            <div id="programme" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body">
+                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, amet illum itaque inventore sit enim odit accusantium pariatur repellat nostrum rem autem soluta harum quia aliquid quis, assumenda, voluptatum saepe? </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div id="accordion">
+          <div class="card" style="padding: 1%;">
+            <div class="card-header" id="headingTwo">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#evaluation" aria-expanded="false" aria-controls="description">
+                  Critère d'Evaluation
+                </button>
+              </h5>
+            </div>
+            <div id="evaluation" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body">
+                <p> {{ref.critereEvaluation}} </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="accordion">
+          <div class="card" style="padding: 1%;">
+            <div class="card-header" id="headingTwo">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#admission" aria-expanded="false" aria-controls="description">
+                  Critère d'Admission
+                </button>
+              </h5>
+            </div>
+            <div id="admission" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body">
+                <p> {{ref.critereAdmission}} </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="accordion">
+          <div class="card" style="padding: 1%;">
+            <div class="card-header" id="headingTwo">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#grpeCompe" aria-expanded="false" aria-controls="description">
+                  Groupes de compétences
+                </button>
+              </h5>
+            </div>
+            <div id="grpeCompe" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body" *ngFor="let comp of ref.groupeCompetences; let j=index">
+                <p> {{j+1 }} {{comp.libelle}} </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
-
-
-  <div class="card text-black bg-white mb-3 col-md-3 shadow p-3 mb-5 bg-white rounded border mt-4" style="margin-right:1%;">
-    <div class="card-header" style="background-color: #079480;">Référent digital</div>
-    <div class="card-body">
-      <h5 class="card-title">Description</h5>
-      <p class="card-text">Lorem max-width: 18rem;ipsum dolor sit amet, consectetur adipisicing elit. Quam exercitationem quod voluptate sunt cum numquam, repudiandae reiciendis delectus, fugiat et voluptatibus id illo sint ipsam illum! Doloremque omnis odio unde?</p>
-      <p> Critère Evaluation</p>
-      <p> Critère Admission</p>
     </div>
-  </div>
-
-
-  <div class="card text-black bg-white mb-3 col-md-3 shadow p-3 mb-5 bg-white rounded border mt-4" style="margin-right:1%;">
-    <div class="card-header" style="background-color: #079480;">Data Artisan</div>
-    <div class="card-body">
-      <h5 class="card-title">Description</h5>
-      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam exercitationem quod voluptate sunt cum numquam, repudiandae reiciendis delectus, fugiat et voluptatibus id illo sint ipsam illum! Doloremque omnis odio unde?</p>
-      <p> Critère Evaluation</p>
-      <p> Critère Admission</p>
-    </div>
-
-
-
 </div>

@@ -21,6 +21,7 @@ export class ProfilSortiesComponent implements OnInit {
       (result:any)=>{
         console.log(result)
         this.profilSortiesData = result
+        console.log(result);
       },
       (error:any)=>console.log(error.error.message)
     )

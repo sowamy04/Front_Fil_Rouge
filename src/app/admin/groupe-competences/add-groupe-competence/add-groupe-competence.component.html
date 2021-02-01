@@ -1,18 +1,23 @@
 <div style="margin: 3%;">
-  <input type="button" class=" btn bg-white" value="cacher" (click)="cacher()"/>
+  <input type="button" class=" btn btn-danger float-right mr-1 mt-1 shadow" value="X" (click)="cacher()"/>
   <div class="justify-content-center align-items-center shadow p-3 mb-5 bg-white rounded border mt-4" style="margin:1%; border: 3px solid rgba(224, 217, 217, 0.925); margin-top: 1%;">
-    <form [formGroup]="groupeCompetenceForm" (ngSubmit)="onSubmit()">
+    <form #grpeCompetenceForm="ngForm" (ngSubmit)="onSubmit(grpeCompetenceForm)">
         <p class="h4 mb-4 row" style="font-size:100%; font-weight:bolder;">Nouveau Groupe Compétence</p>
           <div class="row form-group">
             <label for="" class="col-md-3"> Libellé</label>
-            <input type="text" formControlName="libelle" id="libelle" class="form-control col-md-7">
+            <input type="text" ngModel required name="libelle" #libelle="ngModel" id="libelle" class="form-control col-md-8">
+            <div *ngIf="libelle.invalid && (libelle.dirty || libelle.touched)" class="alert alert-danger"> Le libellé du groupe compétence est requis </div>
+          </div>
+          <div class="row form-group">
+            <label for="" class="col-md-3"> Description</label>
+            <textarea name="description" ngModel required name="description" #description="ngModel" id="description" cols="" rows="5" class="form-control col-md-8 "></textarea>
+            <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger"> La description du groupe de compétences est requise </div>
           </div>
           <div class="row">
             <label for="" class="col-md-3"> Compétences</label>
-            <select class="form-groupe form-control col-md-7">
-              <option value="1">HTML</option>
-              <option value="2">CSS</option>
-              <option value="3">Angular</option>
+            <select  class="form-groupe form-control col-md-8 mul-select" ngModel required name="competence" #competence="ngModel" multiple="true">
+              <option *ngFor="let comp of competences" value=" {{comp.id}} ">{{comp.libelle}}</option>
+              <div *ngIf="competence.invalid && (competence.dirty || competence.touched)" class="alert alert-danger"> Choisissez au moins une compétence </div>
              </select>
           </div>
           <br><br>

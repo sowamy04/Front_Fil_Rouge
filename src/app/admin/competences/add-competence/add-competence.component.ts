@@ -1,6 +1,9 @@
+import Swal from 'sweetalert2';
+import { CompetenceService } from './../service/competence.service';
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgForm } from '@angular/forms';
+import { DIR_DOCUMENT } from '@angular/cdk/bidi';
 
 @Component({
   selector: 'app-add-competence',
@@ -8,24 +11,62 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-competence.component.css']
 })
 export class AddCompetenceComponent implements OnInit {
-  competenceForm : FormGroup | any ;
-  constructor( private formBuilder:FormBuilder, private location : Location ) { }
+
+  competenceForm : NgForm | any ;
+  data : any
+  constructor( private location : Location, public competenceService : CompetenceService ) { }
 
   ngOnInit(): void {
-    this.competenceForm = this.formBuilder.group({
-      libelle: ['', [Validators.required]]
-    })
+
   }
 
-  onSubmit(){
-    if(this.competenceForm.valid){
-      alert('Competence form is valid!!')
-    } else {
-      alert('Competence form is not valid!!')
+  onSubmit(competenceForm:any){
+      const competence = competenceForm.value
+      this.data = {
+        'libelle':competenceForm.value.libelle,
+        'niveau':[
+            {
+                'libelle' : competenceForm.value.libelleNiv1,
+                'critereEvaluation' : competenceForm.value.ce1,
+                'groupeAction' : competenceForm.value.ga1
+            },
+            {
+                'libelle' : competenceForm.value.libelleNiv2,
+                'critereEvaluation' : competenceForm.value.ce2,
+                'groupeAction' : competenceForm.value.ga2
+            },
+            {
+                'libelle' : competenceForm.value.libelleNiv3,
+                'critereEvaluation' : competenceForm.value.ce3,
+                'groupeAction' : competenceForm.value.ga3
+            }
+        ]
     }
+    console.log(this.data)
+    this.competenceService.ajouterCompetence(this.data).subscribe(
+      (reponse:any)=>{
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Compétence ajouté avec succès',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        console.log(reponse)
+      },
+      (error:any)=> console.log(error.error.message)
+    )
+      console.log(competence)
   }
+
   cacher(){
     this.location.back()
   }
+
+  retour(){
+    this.location.back()
+    this.competenceService.col="col-md-10"
+  }
+
 
 }

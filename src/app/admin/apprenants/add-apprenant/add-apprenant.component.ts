@@ -1,3 +1,4 @@
+import { ProfilService } from './../../profils/service/profil.service';
 import  Swal  from 'sweetalert2';
 import { ApprenantService } from './../service/apprenant.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,16 +12,37 @@ import { NgForm } from '@angular/forms';
 export class AddApprenantComponent implements OnInit {
 
   apprenantForm : NgForm | any;
-  constructor( private apprenantService : ApprenantService ) { }
+  constructor( private apprenantService : ApprenantService, private profilService : ProfilService ) { }
 
+  profilsData: any;
+  apprenantLib: any;
   ngOnInit(): void {
-
   }
+
+  showProfils(): any{
+    this.profilService.listerProfils().subscribe(
+      (result:any)=>{
+        console.log(result)
+        this.profilsData = result
+        for (let profil of this.profilsData) {
+          if (profil.libelle == "APPRENANT") {
+            this.apprenantLib = profil.id;
+            console.log(this.apprenantLib)
+          }
+        }
+      },
+      (error:any)=>console.log(error.error.message)
+    )
+  }
+
 
   onSubmit( apprenantForm: any){
     if (apprenantForm.value) {
+       //const appProf = this.showProfils();
+       console.log(this.showProfils())
       const formData = new FormData()
       formData.append('email', apprenantForm.value.email)
+      formData.append('profil', this.apprenantLib)
       this.apprenantService.addApprenant(formData).subscribe(
         (response : any)=> {
           Swal.fire({
@@ -38,6 +60,10 @@ export class AddApprenantComponent implements OnInit {
       )
     }
 
+  }
+
+  soumettre(){
+    
   }
 
   handleFileSelect(evt : any) {

@@ -1,47 +1,58 @@
-<div class="row">
-  <div class="col-md-12 justify-content-center align-items-center" style="margin:1%; margin-top: 1%;">
-    <form [formGroup]="competenceForm" (ngSubmit)="onSubmit()" class="">
-        <p class="h4 mb-4" style="font-size:100%; font-weight:bolder;">Nouvelle Compétence</p>
+<div class="row shadow bg-white ml-5 justify-content-center">
+  <div class="col-md-10 justify-content-center align-items-center" style="margin:1%; margin-top: 1%;">
+    <button (click)="retour()" class=" btn btn-danger bg-danger text-white float-right"> X</button> <br> <br> <br>
+    <form #competenceForm="ngForm" (ngSubmit)="onSubmit(competenceForm)" class="" novalidate>
+        <p class="h4 mb-4" style="font-size:100%; font-weight:bolder;">AJOUT D'UNE NOUVELLE COMPETENCE</p>
         <div class="row">
-          <input type="text" formControlName="libelle" id="libelle" class="form-control form-group" placeholder="Libellé">
+          <input ngModel required name="libelle" #libelle="ngModel" type="text" id="libelle" class="form-control form-group" placeholder="Libellé">
+          <div *ngIf="libelle.invalid && (libelle.dirty || libelle.touched)" class="alert alert-danger"> Le libellé de la compétence est requis </div>
         </div>
         <fieldset class="scheduler-border">
           <legend class="scheduler-border"> Niveau 1</legend>
           <div class="row">
-            <input type="text" formControlName="libelleNiv1" id="libelleNiv1" class="form-control form-group" placeholder="Libellé">
+            <input type="text" ngModel required name="libelleNiv1" #libelleNiv1="ngModel" id="libelleNiv1" class="form-control form-group" placeholder="Libellé">
+            <div *ngIf="libelleNiv1.invalid && (libelleNiv1.dirty || libelleNiv1.touched)" class="alert alert-danger"> Le libellé du niveau est requis </div>
           </div>
           <div class="row">
-            <input type="text" formControlName="ce1" id="ce1" class="form-control form-group" placeholder="Critère Evaluation">
+            <input type="text" ngModel required name="ce1" #ce1="ngModel" id="ce1" class="form-control form-group" placeholder="Critère Evaluation">
+            <div *ngIf="ce1.invalid && (ce1.dirty || ce1.touched)" class="alert alert-danger"> Le critère d'évaluation est requis </div>
           </div>
           <div class="row">
-            <input type="text" formControlName="ga1" id="ga1" class="form-control form-group" placeholder="Groupe d'action">
+            <input type="text" ngModel required name="ga1" #ga1="ngModel" id="ga1" class="form-control form-group" placeholder="Groupe d'action">
+            <div *ngIf="ga1.invalid && (ga1.dirty || ga1.touched)" class="alert alert-danger"> Le groupe d'action est requis </div>
           </div>
         </fieldset>
         <fieldset class="scheduler-border">
           <legend class="scheduler-border"> Niveau 2</legend>
           <div class="row">
-            <input type="text" formControlName="libelleNiv2" id="libelleNiv2" class="form-control form-group" placeholder="Libellé">
+            <input type="text" ngModel required name="libelleNiv2" #libelleNiv2="ngModel" id="libelleNiv2" class="form-control form-group" placeholder="Libellé">
+            <div *ngIf="libelleNiv2.invalid && (libelleNiv2.dirty || libelleNiv2.touched)" class="alert alert-danger"> Le libellé de la compétence est requis </div>
           </div>
           <div class="row">
-            <input type="text" formControlName="ce2" id="ce2" class="form-control form-group" placeholder="Critère Evaluation">
+            <input type="text" ngModel required name="ce2" #ce2="ngModel" id="ce2" class="form-control form-group" placeholder="Critère Evaluation">
+            <div *ngIf="ce2.invalid && (ce2.dirty || ce2.touched)" class="alert alert-danger"> Le critère d'évaluation est requis </div>
           </div>
           <div class="row">
-            <input type="text" formControlName="ga2" id="ga2" class="form-control form-group" placeholder="Groupe d'action">
+            <input type="text" ngModel required name="ga2" #ga2="ngModel" id="ga2" class="form-control form-group" placeholder="Groupe d'action">
+            <div *ngIf="ga2.invalid && (ga2.dirty || ga2.touched)" class="alert alert-danger"> Le groupe d'action est requis </div>
           </div>
         </fieldset>
         <fieldset class="scheduler-border">
           <legend class="scheduler-border"> Niveau 3</legend>
           <div class="row">
-            <input type="text" formControlName="libelleNiv3" id="libelleNiv3" class="form-control form-group" placeholder="Libellé">
+            <input type="text" ngModel required name="libelleNiv3" #libelleNiv3="ngModel" id="libelleNiv3" class="form-control form-group" placeholder="Libellé">
+            <div *ngIf="libelleNiv3.invalid && (libelleNiv3.dirty || libelleNiv3.touched)" class="alert alert-danger"> Le libellé de la compétence est requis </div>
           </div>
           <div class="row">
-            <input type="text" formControlName="ce3" id="ce3" class="form-control form-group" placeholder="Critère Evaluation">
+            <input type="text" ngModel required name="ce3" #ce3="ngModel" id="ce3" class="form-control form-group" placeholder="Critère Evaluation">
+            <div *ngIf="ce3.invalid && (ce3.dirty || ce3.touched)" class="alert alert-danger"> Le critère d'évaluation est requis </div>
           </div>
           <div class="row">
-            <input type="text" formControlName="ga3" id="ga3" class="form-control form-group" placeholder="Groupe d'action">
+            <input type="text" ngModel required name="ga3" #ga3="ngModel" id="ga3" class="form-control form-group" placeholder="Groupe d'action">
+            <div *ngIf="ga3.invalid && (ga3.dirty || ga3.touched)" class="alert alert-danger"> Le groupe d'action est requis </div>
           </div>
         </fieldset>
-      <button class="btn col-md-3 form-group d-flex justify-content-center" style="background-color: #079480;" type="submit">Ajouter</button>
+      <button class="btn col-md-3 form-group justify-content-center" style="background-color: #079480;" type="submit">Ajouter</button>
     </form>
 
   </div>

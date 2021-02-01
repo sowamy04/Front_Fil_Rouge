@@ -1,3 +1,4 @@
+import { CompetenceService } from './service/competence.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompetencesComponent implements OnInit {
 
-  constructor() { }
+
+  competenceData : any;
+  niveauxData : any;
+  constructor(public competenceService : CompetenceService) { }
 
   ngOnInit(): void {
+    this.showCompetences()
+  }
+
+  showCompetences(){
+    this.competenceService.listerCompetences().subscribe(
+      (result:any)=>{
+        console.log(result)
+        this.competenceData = result
+        this.niveauxData = result.niveaux
+        console.log(result);
+      },
+      (error:any)=>console.log(error.error.message)
+    )
+  }
+
+  isclicked(){
+    this.competenceService.col = "col-md-7";
   }
 
 }

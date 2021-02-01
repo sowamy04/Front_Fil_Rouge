@@ -1,3 +1,4 @@
+import { ProfilService } from './../../profils/service/profil.service';
 import Swal from 'sweetalert2';
 import { UserService } from './../Service/user.service';
 import { Location } from '@angular/common';
@@ -12,9 +13,21 @@ import { NgForm } from '@angular/forms';
 export class AddUserComponent implements OnInit {
 
   registerForm:NgForm | any;
-  constructor( private location : Location, public userService : UserService) { }
+  constructor( private location : Location, public userService : UserService, public profilService : ProfilService) { }
 
+  profilsData: any;
   ngOnInit(): void {
+    this.showProfils();
+  }
+
+  showProfils(){
+    this.profilService.listerProfils().subscribe(
+      (result:any)=>{
+        console.log(result)
+        this.profilsData = result
+      },
+      (error:any)=>console.log(error.error.message)
+    )
   }
 
   onSubmit(registerForm : any ){
@@ -25,6 +38,7 @@ export class AddUserComponent implements OnInit {
     formData.append("email", registerForm.value.email)
     formData.append("password", registerForm.value.password)
     formData.append("telephone", registerForm.value.telephone)
+    formData.append("profil", registerForm.value.profil)
     console.log(formData)
     if(registerForm.value){
       if (registerForm.value.profil == 1) {

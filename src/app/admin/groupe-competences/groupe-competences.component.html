@@ -1,4 +1,4 @@
-<div style="padding:2%">
+<div style="padding:2%" class="justify-content-center">
     <div>
       <button type="submit" class="btn float-right mb-6" style="background-color: #079480;" routerLink="add-groupe-competence"> Ajouter un nouveau groupe de compétence</button>
     </div> <br> <br><br>
@@ -8,109 +8,34 @@
   </div>
  </div>
 
-  <div style="border: 2px solid rgb(212, 208, 208);" class="row shadow p-3 mb-5 bg-white rounded border mt-4 justify-content-center">
+  <div style="border: 2px solid rgb(212, 208, 208);" class="row shadow p-3 mb-5 bg-white rounded border mt-4 justify-content-center" >
 
 
-  <div style="padding: 3%;" class="row shadow p-3 mb-5 bg-white rounded border mt-4 col-md-11">
-    <div class="card text-black bg-white mb-3 col-md-3 shadow p-3 mb-5 bg-white rounded border mt-4" style="margin-right:1%; max-width: 18rem;">
-      <div class="card-header" style="background-color: #079480;">Groupe de competence 1</div>
+  <div style="padding: 3%;" class="row shadow p-3 mb-5 bg-white rounded border mt-4 col-md-11 justify-content-center">
+    <div *ngFor="let grpeComp of groupeCompetencesData; let i=index " class="card text-black bg-white mb-3 col-md-3 shadow p-3 mb-5 bg-white rounded border mt-4" style="margin-right:1%; max-width: 18rem;">
+      <div class="card-header" style="background-color: #079480;">{{i+1}} {{grpeComp.libelle}}</div>
       <div class="card-body">
-        <h5 class="card-title">Secondary card title</h5>
-        <p class="card-text">html <br> CSS <br> Agular <br> Ajax</p>
+        <h3 class="card-title">{{grpeComp.description}}</h3>
+        <div id="accordion">
+          <div class="card" style="padding: 1%;">
+            <div class="card-header" id="headingTwo">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#competence" aria-expanded="false" aria-controls="description">
+                  Compétences
+                </button>
+              </h5>
+            </div>
+            <div id="competence" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div *ngFor="let comp of grpeComp.competences; let j=index" class="card-body">
+                <p> {{j+1}} {{ comp.libelle}} </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
     </div>
-
-  <div class="card text-black bg-white mb-3 col-md-3 shadow p-3 mb-5 bg-white rounded border mt-4" style="margin-right:1%; max-width: 18rem;">
-    <div class="card-header" style="background-color: #079480;">Header 1</div>
-    <div class="card-body">
-      <h5 class="card-title">Secondary card title</h5>
-      <p class="card-text">html <br> CSS <br> Agular <br> Ajax</p>    </div>
   </div>
-
-  <div class="card text-black bg-white mb-3 col-md-3 shadow p-3 mb-5 bg-white rounded border mt-4" style="margin-right:1%; max-width: 18rem;">
-    <div class="card-header" style="background-color: #079480;">Header 1</div>
-    <div class="card-body">
-      <h5 class="card-title">Secondary card title</h5>
-      <p class="card-text">html <br> CSS <br> Agular <br> Ajax</p>    </div>
-  </div>
-  <div class="card text-black bg-white mb-3 col-md-3 shadow p-3 mb-5 bg-white rounded border mt-4" style="margin-right:1%; max-width: 18rem;">
-    <div class="card-header" style="background-color: #079480;">Header 1</div>
-    <div class="card-body">
-      <h5 class="card-title">Secondary card title</h5>
-      <p class="card-text">html <br> CSS <br> Agular <br> Ajax</p>    </div>
-  </div>
-
-  <div class="card text-black bg-white mb-3 col-md-3 shadow p-3 mb-5 bg-white rounded border mt-4" style="margin-right:1%; max-width: 18rem;">
-    <div class="card-header" style="background-color: #079480;">Header 1</div>
-    <div class="card-body">
-      <h5 class="card-title">Secondary card title</h5>
-      <p class="card-text">html <br> CSS <br> Agular <br> Ajax</p>    </div>
-  </div>
-
-  <div class="card text-black bg-white mb-3 col-md-3 shadow p-3 mb-5 bg-white rounded border mt-4" style="margin-right:1%; max-width: 18rem;">
-    <div class="card-header" style="background-color: #079480;">Header 1</div>
-    <div class="card-body">
-      <h5 class="card-title">Secondary card title</h5>
-      <p class="card-text">html <br> CSS <br> Agular <br> Ajax</p>    </div>
-  </div>
-
-  <div class="card text-black bg-white mb-3 col-md-3 shadow p-3 mb-5 bg-white rounded border mt-4" style="margin-right:1%; max-width: 18rem;">
-    <div class="card-header" style="background-color: #079480;">Header 1</div>
-    <div class="card-body">
-      <h5 class="card-title">Secondary card title</h5>
-      <p class="card-text">html <br> CSS <br> Agular <br> Ajax</p>    </div>
-  </div>
-
-  <div class="card text-black bg-white mb-3 col-md-3 shadow p-3 mb-5 bg-white rounded border mt-4" style="margin-right:1%; max-width: 18rem;">
-    <div class="card-header" style="background-color: #079480;">Header 1</div>
-    <div class="card-body">
-      <h5 class="card-title">Secondary card title</h5>
-      <p class="card-text">html <br> CSS <br> Agular <br> Ajax</p>    </div>
-  </div>
-
-  <div class="card text-black bg-white mb-3 col-md-3 shadow p-3 mb-5 bg-white rounded border mt-4" style="margin-right:1%; max-width: 18rem;">
-    <div class="card-header" style="background-color: #079480;">Header 1</div>
-    <div class="card-body">
-      <h5 class="card-title">Secondary card title</h5>
-      <p class="card-text">html <br> CSS <br> Agular <br> Ajax</p>    </div>
-  </div>
-
-  <div class="card text-black bg-white mb-3 col-md-3 shadow p-3 mb-5 bg-white rounded border mt-4" style="margin-right:1%; max-width: 18rem;">
-    <div class="card-header" style="background-color: #079480;">Header 1</div>
-    <div class="card-body">
-      <h5 class="card-title">Secondary card title</h5>
-      <p class="card-text">html <br> CSS <br> Agular <br> Ajax</p>    </div>
-  </div>
-
-  <div class="card text-black bg-white mb-3 col-md-3 shadow p-3 mb-5 bg-white rounded border mt-4" style="margin-right:1%; max-width: 18rem;">
-    <div class="card-header" style="background-color: #079480;">Header 1</div>
-    <div class="card-body">
-      <h5 class="card-title">Secondary card title</h5>
-      <p class="card-text">html <br> CSS <br> Agular <br> Ajax</p>    </div>
-  </div>
-
-  <div class="card text-black bg-white mb-3 col-md-3 shadow p-3 mb-5 bg-white rounded border mt-4" style="margin-right:1%; max-width: 18rem;">
-    <div class="card-header" style="background-color: #079480;">Header 1</div>
-    <div class="card-body">
-      <h5 class="card-title">Secondary card title</h5>
-      <p class="card-text">html <br> CSS <br> Agular <br> Ajax</p>    </div>
-  </div>
-
-  <div class="card text-black bg-white mb-3 col-md-3 shadow p-3 mb-5 bg-white rounded border mt-4" style="margin-right:1%; max-width: 18rem;">
-    <div class="card-header" style="background-color: #079480;">Header 1</div>
-    <div class="card-body">
-      <h5 class="card-title">Secondary card title</h5>
-      <p class="card-text">html <br> CSS <br> Agular <br> Ajax</p>    </div>
-  </div>
-
-  <div class="card text-black bg-white mb-3 col-md-3 shadow p-3 mb-5 bg-white rounded border mt-4" style="margin-right:1%; max-width: 18rem;">
-    <div class="card-header" style="background-color: #079480;">Header 1</div>
-    <div class="card-body">
-      <h5 class="card-title">Secondary card title</h5>
-      <p class="card-text">html <br> CSS <br> Agular <br> Ajax</p>    </div>
-  </div>
-
-</div>
 
 
   </div>

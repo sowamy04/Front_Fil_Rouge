@@ -34,9 +34,7 @@
 
     <div class="input-group">
       <select ngModel required name="profil" #profil="ngModel" id="profil" class="custom-select form-control" id="inputGroupSelect04">
-        <option value="1">Admin</option>
-        <option value="2">Formateur</option>
-        <option value="3">Community Manager</option>
+        <option *ngFor="let profil of profilsData" value="{{profil.id}}">{{ profil.libelle}}</option>
       </select>
     </div> <br>
     <div *ngIf="profil.invalid && (profil.dirty || profil.touched)" class="alert alert-danger"> Le profil est requis </div>

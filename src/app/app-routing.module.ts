@@ -1,3 +1,4 @@
+import { AddCompetenceComponent } from './admin/competences/add-competence/add-competence.component';
 import { AddGroupeCompetenceComponent } from './admin/groupe-competences/add-groupe-competence/add-groupe-competence.component';
 import { AddPromoComponent } from './admin/promos/add-promo/add-promo.component';
 import { NgModule } from '@angular/core';
@@ -59,6 +60,8 @@ const routes: Routes = [
       },
       { path:'competences', component:CompetencesComponent, canActivate:[
           TokenGuard
+        ], children:[
+          { path:'add-competence', component:AddCompetenceComponent }
         ]
       },
       { path:'groupe-competences', component:GroupeCompetencesComponent, canActivate:[

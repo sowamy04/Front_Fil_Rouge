@@ -12,10 +12,12 @@
   </div>
 
   <div class="col-md-3 justify-content-center align-items-center shadow p-3 mb-5 bg-white rounded border mt-4" style="margin:2%; border : 3px solid rgba(224, 217, 217, 0.925); margin-top: 1%; margin-left:3%;">
-    <label class="btn btn-default mr-6" style="border:2px solid #079480;">
-      Choisir un fichier CSV <input type="file" accept=".csv" name="photo" (change)="handleFileSelect($event)" hidden>
-  </label>
-    <button type="submit" class="btn text-white" style="background-color: rgb(238, 128, 38);"> Ajouter</button>
+    <form action="">
+      <label class="btn btn-default mr-6" style="border:2px solid #079480;">
+        Choisir un fichier CSV <input type="file" accept=".csv" name="photo" (change)="handleFileSelect($event)" hidden>
+      </label>
+      <button type="submit" class="btn text-white" style="background-color: rgb(238, 128, 38);"> Ajouter</button>
+    </form>
   </div>
 </div>
 
