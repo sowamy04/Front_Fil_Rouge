@@ -4,6 +4,7 @@ import { AngularMaterialModule } from './ angular-material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from "@auth0/angular-jwt";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { NgxCsvParserModule } from 'ngx-csv-parser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +30,19 @@ import { ListeApprenantsAttenteComponent } from './admin/apprenants/liste-appren
 import { GenerationTokenService } from './services/generation-token.service';
 import { InterceptorTokenService } from './services/interceptor-token.service';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AddReferentielComponent } from './admin/referentiels/add-referentiel/add-referentiel.component';
+import { DetailApprenantComponent } from './admin/apprenants/detail-apprenant/detail-apprenant.component';
+import { UpdateApprenantComponent } from './admin/apprenants/update-apprenant/update-apprenant.component';
+import { UpdateUserComponent } from './admin/users/update-user/update-user.component';
+import { UpdateProfilSortieComponent } from './admin/profil-sorties/update-profil-sortie/update-profil-sortie.component';
+import { UpdateCompetenceComponent } from './admin/competences/update-competence/update-competence.component';
+import { UpdateGroupeCompetenceComponent } from './admin/groupe-competences/update-groupe-competence/update-groupe-competence.component';
+import { UpdateReferentielComponent } from './admin/referentiels/update-referentiel/update-referentiel.component';
+import { UpdatePromoComponent } from './admin/promos/update-promo/update-promo.component';
+import { ListeApprenantsComponent } from './admin/profil-sorties/liste-apprenants/liste-apprenants.component';
+import { FormateurComponent } from './formateur/formateur.component';
+import { ApprenantComponent } from './apprenant/apprenant.component';
+import { UpdateOneApprenantComponent } from './apprenant/update-one-apprenant/update-one-apprenant.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +65,20 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AddGroupeCompetenceComponent,
     ListeUtilisateursProfilComponent,
     ListeApprenantsAttenteComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AddReferentielComponent,
+    DetailApprenantComponent,
+    UpdateApprenantComponent,
+    UpdateUserComponent,
+    UpdateProfilSortieComponent,
+    UpdateCompetenceComponent,
+    UpdateGroupeCompetenceComponent,
+    UpdateReferentielComponent,
+    UpdatePromoComponent,
+    ListeApprenantsComponent,
+    FormateurComponent,
+    ApprenantComponent,
+    UpdateOneApprenantComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +88,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ReactiveFormsModule,
     JwtModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxCsvParserModule
   ],
   providers: [
     GenerationTokenService,

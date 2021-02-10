@@ -1,0 +1,71 @@
+<div class="shadow p-3 mb-5 bg-white rounded border mt-4 col-md-7 " style="margin-left : 20; border: 3px solid rgba(224, 217, 217, 0.925); padding:2%">
+  <form #updateForm="ngForm" (ngSubmit)="onUpdateForm(updateForm)" class="text-center borderborder-light p-5" novalidate>
+
+    <p class="h4 mb-4" style="font-size:200%; font-weight:bolder;">Modification des Informations </p>
+
+    <div class="rounded-circle center d-flex justify-content-center">
+      <div class="col-md-3">
+        <img src="" class="rounded-circle" width="130" height="130" alt="" style="margin-bottom: 2%;">
+      </div>
+      <div class="col-md-3">
+        <label class="btn btn-default text-white" style="background-color: #079480;">
+          Changer de photo de profil <input type="file" name="photo" (change)="uploadFile($event)" #UploadFileInput hidden>
+        </label>
+      </div>
+    </div>
+
+      <div class=" form-row row mb-4">
+        <label for="" class="col-md-4"> Prénom </label>
+          <input type="text" ngModel required pattern="^[a-zA-Z]+$" name="prenom" #prenom="ngModel" id="prenom" class="form-control col-md-6" placeholder="Entrer votre Prénom">
+          <div *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)" class="alert alert-danger"> Le prénom est requis </div>
+      </div>
+
+      <div class="form-row row mb-4">
+        <label for="" class="col-md-4"> Nom </label>
+        <input type="text" ngModel required pattern="^[a-zA-Z]+$" name="nom" #nom="ngModel" id="nom" class="form-control col-md-6" placeholder="Entrer votre Nom">
+        <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="alert alert-danger"> Le nom est requis </div>
+      </div>
+
+      <div class="row">
+        <label for="" class="col-md-4"> Email</label>
+        <input type="email" id="email" ngModel required email name="email" #email="ngModel" class="form-control mb-4 col-md-6" [(ngModel)]="data.email" readonly>
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger"> L'email est requis </div>
+      </div>
+      <div class="row">
+        <label for="" class="col-md-4"> Password</label>
+        <input type="password" id="password" ngModel required email name="password" #password="ngModel" class="form-control mb-4 col-md-6" placeholder="Entrer votre mot de passe">
+      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger"> Le mot de passe est requis </div>
+      </div>
+
+    <div class="row">
+      <label for="" class="col-md-4"> Téléphone</label>
+      <input type="text" id="phone" ngModel required name="telephone" #telephone="ngModel" class="form-control mb-4 col-md-6" placeholder="Entrer votre numéro de téléphone">
+      <div *ngIf="telephone.invalid && (telephone.dirty || telephone.touched)" class="alert alert-danger"> Le numéro de téléphone est requis </div>
+    </div>
+
+    <div class="form-row row">
+      <label for="" class="col-md-4"> Genre</label>
+      <select ngModel required name="genre" #genre="ngModel" id="genre" class="custom-select form-control col-md-6" id="inputGroupSelect04">
+        <option  value="homme">Homme</option>
+        <option  value="femme">Femme</option>
+      </select>
+      <div *ngIf="genre.invalid && (genre.dirty || genre.touched)" class="alert alert-danger"> Le profil est requis </div>
+    </div> <br>
+
+    <div class="form-row row">
+      <label for="" class="col-md-4"> Adresse </label>
+      <input type="text" id="adresse" ngModel required name="adresse" #adresse="ngModel" class="form-control mb-4 col-md-6" placeholder="Entrer votre  adresse">
+      <div *ngIf="adresse.invalid && (adresse.dirty || adresse.touched)" class="alert alert-danger"> Donnez votre adresse svp! </div>
+    </div>
+
+    <div class="form-row row" hidden>
+      <label for="" class="col-md-4"> Profil </label>
+      <input type="text" id="profil" name="profil" class="form-control mb-4 col-md-6" [(ngModel)]="data.profils.libelle" hidden>
+    </div>
+
+    <br>
+      <div class="row shadow bg-white rounded">
+        <button class="btn my-3 btn-block col-md-4 float-right text-white" style="background-color: #079480; margin-left:6%;" type="submit">Update</button>
+      </div>
+  </form>
+</div>

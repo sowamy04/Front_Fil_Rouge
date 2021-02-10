@@ -10,7 +10,7 @@
           </tr>
         </thead>
         <tbody *ngFor="let app of datasource">
-          <tr *ngIf="app.firstConnexion == 0">
+          <tr *ngIf="app.firstConnexion == 1">
             <td> {{app.id }} </td>
             <td> {{app.email}} </td>
           </tr>

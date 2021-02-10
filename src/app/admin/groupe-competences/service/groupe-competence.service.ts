@@ -17,4 +17,12 @@ export class GroupeCompetenceService {
   ajouterGroupeCompetence(groupeCompetenceData : any){
     return this.http.post(this.url+'admin/grpecompetences', groupeCompetenceData);
   }
+
+  detailGroupeCompetence( id : number){
+    return this.http.get(this.url+'admin/grpecompetences/'+id);
+  }
+
+  updateGroupeCompetence(id : number, groupeCompetenceData : any){
+    return this.http.put(this.url+'admin/grpecompetences/'+id, groupeCompetenceData)
+  }
 }

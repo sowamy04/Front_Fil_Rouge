@@ -1,0 +1,80 @@
+<div class="row justify-content-center">
+
+  <div class=" col-md-9 shadow p-3 mb-5 bg-white rounded border mt-4" style="border: 3px solid rgba(224, 217, 217, 0.925); margin-top:2%;">
+    <form #promoUpdateForm="ngForm" (ngSubmit)="onUpdate(promoUpdateForm)" class="text-center border border-light p-5">
+      <p class="h4 mb-4" style="font-size:400%; font-weight:bolder;">Ajout d'une Promotion</p>
+
+      <div class="row">
+
+        <div class="col-md-4">
+          <div class=" row form-row mb-4">
+            <label for="" class="col-md-4">Langue</label>
+            <input type="text" ngModel required name="langue" #langue="ngModel" id="langue" class="form-control mb-4 col-md-7">
+            <div *ngIf="langue.invalid && (langue.dirty || langue.touched)" class="alert alert-danger"> Le langue est requise </div>
+          </div>
+          <div class=" row form-row mb-4">
+            <label for="" class="col-md-4">Titre</label>
+            <input type="text" ngModel required name="libelle" #libelle="ngModel" id="titre" class="form-control mb-4 col-md-7">
+            <div *ngIf="libelle.invalid && (libelle.dirty || libelle.touched)" class="alert alert-danger"> Le libellé est requis </div>
+          </div>
+          <div class=" row form-row mb-4">
+            <label for="" class="col-md-4">Description</label>
+            <textarea ngModel required name="description" #description="ngModel" id="" cols="30" rows="3" class="form-control mb-4 col-md-7"></textarea>
+            <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert alert-danger"> Le description est requise </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class=" row form-row mb-4">
+            <label for="" class="col-md-4">Lieu </label>
+            <input type="text" ngModel required name="lieu" #lieu="ngModel" id="lieu" class="form-control mb-4 col-md-7">
+            <div *ngIf="lieu.invalid && (lieu.dirty || lieu.touched)" class="alert alert-danger"> Le lieu est requis </div>
+          </div>
+          <div class=" row form-row mb-4">
+            <label for="" class="col-md-4">Référent Agate</label>
+            <input type="text" ngModel required name="agate" #agate="ngModel" id="agate" class="form-control mb-4 col-md-7">
+            <div *ngIf="agate.invalid && (agate.dirty || agate.touched)" class="alert alert-danger"> Le référent agate est requis </div>
+          </div>
+          <div class=" row form-row mb-4">
+            <label for="" class="col-md-4">Fabrique</label>
+            <select ngModel required name="fabrique" #fabrique="ngModel" class="custom-select col-md-7" id="fabrique">
+              <option selected>Choisir la fabrique...</option>
+              <option value="Sonatel Academy"> Sonatel Academy </option>
+              <option value="Simplon and Co"> Simplon and Co</option>
+            </select>
+            <div *ngIf="fabrique.invalid && (fabrique.dirty || fabrique.touched)" class="alert alert-danger"> Choisissez la fabrique </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class=" row form-row mb-4">
+            <label for="" class="col-md-4">Date de début </label>
+            <input type="text" ngModel required name="dateDebut" #dateDebut="ngModel" id="dateDebut" class="form-control mb-4 col-md-7">
+            <div *ngIf="dateDebut.invalid && (dateDebut.dirty || dateDebut.touched)" class="alert alert-danger"> Le date de début est requise </div>
+          </div>
+          <div class=" row form-row mb-4">
+            <label for="" class="col-md-4"> Date de fin</label>
+            <input type="text" ngModel required name="dateFin" #dateFin="ngModel" id="dateFin" class="form-control mb-4 col-md-7">
+            <div *ngIf="dateFin.invalid && (dateFin.dirty || dateFin.touched)" class="alert alert-danger"> La date de fin est requis </div>
+          </div>
+          <div class=" row form-row mb-4">
+            <label for="" class="col-md-4">Référentiels</label>
+            <select ngModel required name="ref" #ref="ngModel" class="custom-select col-md-7" id="inputGroupSelect04" multiple="true">
+              <option selected>Choisir les référentiels...</option>
+              <option *ngFor="let ref of referentiels" value=" {{ref.id}} "> {{ref.libelle}} </option>
+            </select>
+            <div *ngIf="ref.invalid && (ref.dirty || ref.touched)" class="alert alert-danger"> Choisissez au moins un référentiel </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row justify-content-center">
+        <button (click)="retour()" class="col-md-2 btn my-4 btn-block float-left btn-danger" style="margin-right:3%;" type="button">Retour</button>
+        <button class="col-md-2 btn my-4 btn-block" style=" margin-left:3%; background-color: #079480;" type="submit">Ajouter</button>
+      </div>
+      <hr>
+    </form>
+  </div>
+
+  </div>

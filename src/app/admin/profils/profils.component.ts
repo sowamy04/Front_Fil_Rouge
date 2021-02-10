@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { ProfilService } from './service/profil.service';
@@ -12,10 +12,24 @@ export class ProfilsComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'libelle', 'action']
   profilsData : any
-  constructor( private route:Router, public profilService:ProfilService) { }
+  id : any
+  data:any
+  dat: any
+  constructor( private route:Router, public profilService:ProfilService, private routeActivated: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.getProfil()
     this.showProfils()
+  }
+
+  getProfil(){
+    this.profilService.getProfil(this.id).subscribe(
+      (response : any)=>{
+        console.log(response)
+        this.dat = response
+      },
+      error=> console.log(error)
+    )
   }
 
   showProfils(){
@@ -38,20 +52,28 @@ export class ProfilsComponent implements OnInit {
             },
             error=> console.log(error)
           )
-
       }
     )
-
-
-
   }
 
+  /* getProfilData(){
+    this.profilService.getProfil(this.id).subscribe(
+      (response : any)=>{
+        console.log(response)
+        this.data = response
+      },
+      error=> console.log(error)
+    )
+  } */
 
   details(){
     this.route.navigateByUrl('users-profil')
   }
 
-  supprimer(){
+  supprimer(profilData : any){
+    /* this.id = this.routeActivated.snapshot.params['id'];
+    profilData =  this.getProfil() */
+    console.log(profilData)
     Swal.fire({
       title: 'veut-tu vraiment supprimer ce profil?',
       showDenyButton: true,
@@ -60,7 +82,19 @@ export class ProfilsComponent implements OnInit {
       denyButtonText: `Annuler`,
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire('Supprimé avec succès!', '', 'success')
+        this.profilService.deleteProfil(profilData.id).subscribe(
+          (result : any)=>{
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Profil supprimé avec succès',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            console.log(result)
+          },
+          error=>console.log(error)
+        )
       } else if (result.isDenied) {
         Swal.fire('Suppression annulée', '', 'info')
       }

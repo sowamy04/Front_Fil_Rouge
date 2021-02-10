@@ -22,7 +22,19 @@ export class ApprenantService {
   }
 
   addApprenant(dataApp:any){
-    return this.http.post(this.url+'apprenants', dataApp)
+    return this.http.post(this.url+'apprenants', dataApp, this.httpOption)
+  }
+
+  detailApprenant( id : number){
+    return this.http.get(this.url+'apprenants/'+id);
+  }
+
+  updateApprenant(id : number, dataApp : any){
+    return this.http.post(this.url+'apprenants/'+id+'?_method=PUT', dataApp)
+  }
+
+  deleteApprenant(id : number){
+    return this.http.delete(this.url+'admin/users/'+id);
   }
 
 }

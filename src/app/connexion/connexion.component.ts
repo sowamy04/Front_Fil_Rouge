@@ -26,25 +26,37 @@ export class ConnexionComponent implements OnInit {
 
   onLogin(){
     const loginVal = this.loginForm.value
+      if (loginVal){
         this.auth.getToken(loginVal).subscribe(
           (response:any)=> {localStorage.setItem('token', response.token);
           const decodedToken = this.helper.decodeToken( response.token);
           console.log(decodedToken)
-          if (decodedToken.roles == "ROLE_ADMIN") {
-            this.router.navigateByUrl("/admin/profils")
+          if (decodedToken.statut == 1) {
+            if (decodedToken.roles == "ROLE_ADMIN") {
+              this.router.navigateByUrl("/admin/profils")
+            }
+            else if (decodedToken.roles == "ROLE_APPRENANT"){
+              if(decodedToken.firstConnexion == 1){
+                this.router.navigateByUrl("/update-app")
+              }
+              else{
+                this.router.navigateByUrl("/apprenants")
+              }
+            }
+            else if (decodedToken.roles == "ROLE_FORMATEUR"){
+              this.router.navigateByUrl("/formateurs/apprenants")
+            }
+            else {
+              this.router.navigateByUrl("/cm")
+            }
           }
-          else if (decodedToken.roles == "ROLE_APPRENANT"){
-            this.router.navigateByUrl("/apprenants")
-          }
-          else if (decodedToken.roles == "ROLE_FORMATEUR"){
-            this.router.navigateByUrl("/formateurs")
-          }
-          else {
-            this.router.navigateByUrl("/cm")
+          else{
+            this.message = "Vous n'avez plus accès a cette plateforme BYE!"
           }
         },
           error=> this.message = "Email ou mot de passe incorrects!"
         )
+      }
   }
 
   isAuthenticated(){

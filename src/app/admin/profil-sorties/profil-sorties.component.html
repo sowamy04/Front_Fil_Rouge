@@ -1,5 +1,5 @@
 <div class="row justify-content-center">
-  <div style="padding: 3%;" class="col-md-9 shadow p-3 mb-5 bg-white rounded border mt-4">
+  <div style="padding: 3%;" class=" {{ profilSorties.col }} shadow p-3 mb-5 bg-white rounded border mt-4">
     <table class="table table-striped" style="border: 2px solid rgb(212, 208, 208);">
       <thead>
         <tr>
@@ -10,15 +10,19 @@
         </tr>
       </thead>
       <tbody *ngFor="let profil of profilSortiesData">
-        <tr>
+        <tr *ngIf="profil.statut == 1">
           <td scope="row">{{profil.id}}</td>
           <td>{{profil.libelle}}</td>
-          <td> <button class="btn btn-success btn-sm rounded-0 " type="button" data-toggle="tooltip" data-placement="top" title="Détail"><i class="fa fa-table"></i></button></td>
-          <td> <button class="btn btn-danger btn-sm rounded-0 " type="button" data-toggle="tooltip" data-placement="top" title="Supprimer"><i class="fa fa-trash"></i></button></td>
+          <td> <button [routerLink]="[profil.id+'/users']" (click)="detail()" class="btn btn-success btn-sm rounded-0 " type="button" data-toggle="tooltip" data-placement="top" title="Détail"><i class="fa fa-table"></i></button></td>
+          <td> <button (click)="supprimer(profil)" class="btn btn-danger btn-sm rounded-0 " type="button" data-toggle="tooltip" data-placement="top" title="Supprimer"><i class="fa fa-trash"></i></button></td>
         </tr>
       </tbody>
     </table>
 
+  </div>
+
+  <div class="col-md-5 ml-5">
+    <router-outlet> </router-outlet>
   </div>
 
 </div>

@@ -24,11 +24,20 @@
         </thead>
 
         <tbody *ngFor="let comp of competenceData; let i=index">
-            <tr data-toggle="collapse" [attr.data-target]="'#comp'+i"  class="accordion-toggle">
+            <tr *ngIf="comp.statut == 1" data-toggle="collapse" [attr.data-target]="'#comp'+i"  class="accordion-toggle">
                <td><button class="btn btn-default btn-xs fa fa-eye"><span class="glyphicon glyphicon-eye-open"></span></button></td>
                 <td>{{i+1}}</td>
                 <td>{{comp.libelle}}</td>
-                <td class=" fa fa-trash text-danger">Supprimer</td>
+                <td>
+                  <ul class="list-inline m-0  d-flex justify-content-center">
+                    <li class="list-inline-item">
+                        <button [routerLink] = "[comp.id+'/update']" class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
+                    </li>
+                    <li class="list-inline-item">
+                        <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                    </li>
+                </ul>
+                </td>
             </tr>
 
             <tr class="">
@@ -46,8 +55,8 @@
 
                           <tbody *ngFor="let niveau of comp.niveaux">
 
-                            <tr data-toggle="collapse"  class="accordion-toggle" data-target="#demo10">
-                              <td> <a href="#">{{niveau.id}}</a></td>
+                            <tr  *ngIf="niveau.statut == 1" data-toggle="collapse"  class="accordion-toggle" data-target="#demo10">
+                              <td> <a>{{niveau.id}}</a></td>
                               <td>{{niveau.libelle}}</td>
                               <td>{{niveau.critereEvaluation}} </td>
                               <td> {{niveau.groupeAction}}</td>
@@ -70,7 +79,7 @@
 
 </div>
 
-<div style="margin-top:1%;" class="col-md-5">
+<div style="margin-top:1%;" class="col-md-5 mt-5">
   <router-outlet> </router-outlet>
 </div>
 

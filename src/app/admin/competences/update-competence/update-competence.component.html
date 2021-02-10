@@ -1,0 +1,33 @@
+<div class="row shadow bg-white ml-5 justify-content-center">
+  <div class="col-md-10 justify-content-center align-items-center" style="margin:1%; margin-top: 1%;">
+    <form #competenceUpdateForm="ngForm" (ngSubmit)="onUpdate(competenceUpdateForm)" class="" novalidate>
+        <p class="h4 mb-4" style="font-size:100%; font-weight:bolder;">MODIFICATION D'UNE COMPETENCE</p>
+        <div class="row">
+          <input ngModel required name="libelle" #libelle="ngModel" type="text" id="libelle" class="form-control form-group" [(ngModel)]="data.libelle">
+          <div *ngIf="libelle.invalid && (libelle.dirty || libelle.touched)" class="alert alert-danger"> Le libellé de la compétence est requis </div>
+        </div>
+          <fieldset class="scheduler-border" *ngFor="let niveau of data.niveaux; let i = index">
+            <legend class="scheduler-border"> Niveau {{i+1}}</legend>
+            <div class="row">
+              <input type="text" ngModel required name="libelleNiv{{i +1}}" #libelleNiv1="ngModel" id="libelleNiv{{i +1}}" class="form-control form-group" [(ngModel)]="niveau.libelle">
+  <!--             <div *ngIf="libelleNiv1'.invalid && (libelleNiv1.dirty || libelleNiv1.touched)" class="alert alert-danger"> Le libellé du niveau est requis </div>
+   -->          </div>
+            <div class="row">
+              <input type="text" ngModel required name="ce{{i +1}}" #ce1="ngModel" id="ce{{i +1}}" class="form-control form-group" [(ngModel)]="niveau.critereEvaluation">
+  <!--             <div *ngIf="ce1.invalid && (ce1.dirty || ce1.touched)" class="alert alert-danger"> Le critère d'évaluation est requis </div>
+   -->          </div>
+            <div class="row">
+              <input type="text" ngModel required name="ga{{i +1}}" #ga1="ngModel" id="ga{{i +1}}" class="form-control form-group" [(ngModel)]="niveau.groupeAction">
+  <!--             <div *ngIf="ga1.invalid && (ga1.dirty || ga1.touched)" class="alert alert-danger"> Le groupe d'action est requis </div>
+   -->          </div>
+          </fieldset>
+
+
+        <div class="justify-content-center">
+          <button class="btn btn-danger col-md-3 mr-5 form-group justify-content-center" type="button" (click)="cacher()">Annuler</button>
+          <button class="btn col-md-3 form-group justify-content-center" style="background-color: #079480;" type="submit">Modifier</button>
+        </div>
+    </form>
+
+  </div>
+</div>

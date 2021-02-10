@@ -1,49 +1,52 @@
-<div style="border: 3px solid rgba(224, 217, 217, 0.925); margin-right : 20%; margin-left : 20%; ">
-  <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="text-center border border-light p-5">
+<div class="shadow p-3 mb-5 bg-white rounded border mt-4 col-md-7 " style="margin-left : 20; border: 3px solid rgba(224, 217, 217, 0.925); padding:2%">
+  <form #updateForm="ngForm" (ngSubmit)="onUpdateForm(updateForm)" class="text-center borderborder-light p-5" novalidate>
 
-    <p class="h4 mb-4" style="font-size:400%; font-weight:bolder;">Informations Personnelles</p>
+    <p class="h4 mb-4" style="font-size:200%; font-weight:bolder;">Modification des Informations </p>
 
-    <div class="rounded-circle center d-flex justify-content-center" >
-      <img src="assets/images/connexion.png" class="rounded-circle" width="130" height="130" alt="" style="margin-bottom: 2%;">
+    <div class="rounded-circle center d-flex justify-content-center">
+      <div class="col-md-3">
+        <img src="data:image/jpg;base64,{{data.photo}}" class="rounded-circle" width="130" height="130" alt="" style="margin-bottom: 2%;">
+      </div>
+      <div class="col-md-3">
+        <label class="btn btn-default text-white" style="background-color: #079480;">
+          Changer de photo de profil <input type="file" name="photo" (change)="uploadFile($event)" #UploadFileInput hidden>
+        </label>
+      </div>
     </div>
 
+      <div class=" form-row row mb-4">
+        <label for="" class="col-md-4"> Prénom </label>
+          <input type="text" ngModel required pattern="^[a-zA-Z]+$" name="prenom" #prenom="ngModel" id="prenom" class="form-control col-md-6" [(ngModel)]="data.prenom">
+          <div *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)" class="alert alert-danger"> Le prénom est requis </div>
+      </div>
 
-        <div class="row">
-          <label for="" class="col-md-3"> Prénom </label>
-            <input type="text" formControlName="prenom" id="firstname" class="form-control mb-4 col-md-7" value="Admin" [readOnly]="readOnly">
-        </div>
+      <div class="form-row row mb-4">
+        <label for="" class="col-md-4"> Nom </label>
+        <input type="text" ngModel required pattern="^[a-zA-Z]+$" name="nom" #nom="ngModel" id="nom" class="form-control col-md-6" [(ngModel)]="data.nom">
+        <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="alert alert-danger"> Le nom est requis </div>
+      </div>
 
-        <div class="row">
-          <label for="" class="col-md-3"> Nom</label>
-            <input type="text" formControlName="nom" id="lastname" class="form-control mb-4 col-md-7" value="Admin" [readOnly]="readOnly">
-        </div>
+      <div class="row">
+        <label for="" class="col-md-4"> Email</label>
+        <input type="email" id="email" ngModel required email name="email" #email="ngModel" class="form-control mb-4 col-md-6" [(ngModel)]="data.email" readonly>
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger"> L'email est requis </div>
+      </div>
 
+    <div class="row">
+      <label for="" class="col-md-4"> Téléphone</label>
+      <input type="text" id="phone" ngModel required pattern="#^7{7|6|5|0}[0-9]{7}" name="telephone" #telephone="ngModel" class="form-control mb-4 col-md-6" [(ngModel)]="data.telephone">
+      <div *ngIf="telephone.invalid && (telephone.dirty || telephone.touched)" class="alert alert-danger"> Le numéro de téléphone est requis </div>
+    </div>
 
-        <div class="row">
-          <label for="" class="col-md-3"> Email</label>
-          <input type="email" formControlName="email" id="email" class="form-control mb-4 col-md-7" value="admin@gmail.com" [readOnly]="readOnly">
-        </div>
+    <div class="form-row row">
+      <label for="" class="col-md-4"> Profil </label>
+      <input type="text" id="genre" name="genre" class="form-control mb-4 col-md-6" [(ngModel)]="data.profils.libelle" readonly>
+    </div>
 
-          <div class="row">
-            <label for="" class="col-md-3"> Mot de passe</label>
-              <input type="password" formControlName="password" id="password" class="form-control mb-4 col-md-7" value="passer" [readOnly]="readOnly">
-          </div>
-
-
-        <div class="row">
-          <label for="" class="col-md-3"> Téléphone </label>
-          <input type="text" formControlName="telephone" id="phone" class="form-control mb-4 col-md-7" value="77-777-77-77" [readOnly]="readOnly">
-        </div>
-        <div class="input-group row">
-          <label for="" class="col-md-3"> Profil </label>
-          <input type="text" formControlName="profil" id="profil" class="form-control mb-4 col-md-7" value="Admin" readonly>
-        </div>
-        <div row class="w-50 justify-content-center" style="margin-left: 30%;">
-          <button (click)="retour()" class="btn my-4 btn-block col-md-3 bg-primary float-left" type="button">Retour</button>
-          <button class="btn my-4 btn-block col-md-3 float-right" style="background-color: #079480;" type="submit" (click)="onSubmit()">Modifier</button>
-        </div>
-        <hr>
-
+    <br>
+      <div class="row shadow bg-white rounded">
+        <button class="btn my-3 btn-block col-md-4 float-left text-white " style="background-color: red; margin-right: 6%; margin-left:10%" type="button">Annuler</button>
+        <button class="btn my-3 btn-block col-md-4 float-right text-white" style="background-color: #079480; margin-left:6%;" type="submit">Update</button>
+      </div>
   </form>
-
 </div>

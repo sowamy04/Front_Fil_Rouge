@@ -13,4 +13,16 @@ export class ReferentielService {
   listerReferentiels(){
     return this.http.get(this.url+'admin/referentiels/grpecompetences');
   }
+
+  addReferentiel( referentielData : any){
+    return this.http.post(this.url+'admin/referentiels', referentielData);
+  }
+
+  detailReferentiel( id : number){
+    return this.http.get(this.url+'admin/referentiels/'+id);
+  }
+
+  updateReferentiel(id : number, referentielData : any){
+    return this.http.post(this.url+'admin/referentiels/'+id+'?_method=PUT', referentielData)
+  }
 }

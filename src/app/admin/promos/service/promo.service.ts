@@ -13,4 +13,16 @@ export class PromoService {
   listerPromos(){
     return this.http.get(this.url+'admin/promo');
   }
+
+  ajouterPromo(promoData : any){
+    return this.http.post(this.url+'admin/promo', promoData);
+  }
+
+  detailPromo( id : number){
+    return this.http.get(this.url+'admin/promo/'+id);
+  }
+
+  updatePromo(id : number, promoData : any){
+    return this.http.post(this.url+'admin/promo/'+id, promoData)
+  }
 }

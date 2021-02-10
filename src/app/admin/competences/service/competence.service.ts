@@ -18,4 +18,16 @@ export class CompetenceService {
   ajouterCompetence(competenceData:any){
     return this.http.post(this.url+'admin/competences', competenceData);
   }
+
+  detailCompetence( id : number){
+    return this.http.get(this.url+'admin/competences/'+id);
+  }
+
+  updateCompetence(id : number, competenceData : any){
+    return this.http.put(this.url+'admin/competences/'+id, competenceData)
+  }
+
+  deleteCompetence(id : number){
+    return this.http.delete(this.url+'admin/competences/'+id);
+  }
 }

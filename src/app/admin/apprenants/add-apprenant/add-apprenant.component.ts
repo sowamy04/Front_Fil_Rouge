@@ -3,6 +3,9 @@ import  Swal  from 'sweetalert2';
 import { ApprenantService } from './../service/apprenant.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { NgxCsvParser } from 'ngx-csv-parser';
+import { ViewChild } from '@angular/core';
+import { NgxCSVParserError } from 'ngx-csv-parser';
 
 @Component({
   selector: 'app-add-apprenant',
@@ -12,10 +15,12 @@ import { NgForm } from '@angular/forms';
 export class AddApprenantComponent implements OnInit {
 
   apprenantForm : NgForm | any;
-  constructor( private apprenantService : ApprenantService, private profilService : ProfilService ) { }
+  constructor( private apprenantService : ApprenantService, private profilService : ProfilService, private ngxCsvParser: NgxCsvParser ) { }
 
   profilsData: any;
   apprenantLib: any;
+  csvRecords: any[] = [];
+  header = false;
   ngOnInit(): void {
   }
 
@@ -42,7 +47,7 @@ export class AddApprenantComponent implements OnInit {
        console.log(this.showProfils())
       const formData = new FormData()
       formData.append('email', apprenantForm.value.email)
-      formData.append('profil', this.apprenantLib)
+      formData.append('profil', '4')
       this.apprenantService.addApprenant(formData).subscribe(
         (response : any)=> {
           Swal.fire({
@@ -62,34 +67,47 @@ export class AddApprenantComponent implements OnInit {
 
   }
 
-  soumettre(){
-    
+  soumettre(csvFile : any){
+
   }
 
-  handleFileSelect(evt : any) {
-    var files = evt.target.files; // FileList object
-    var file = files[0];
-    var reader = new FileReader();
-    reader.readAsText(file);
-    reader.onload = (event: any) => {
-      var csv = event.target.result; // Content of CSV file
-      console.log(csv)
-      /* this.papa.parse(csv, {
-        skipEmptyLines: true,
-        header: true,
-        complete: (results) => {
-          for (let i = 0; i < results.data.length; i++) {
-            let orderDetails = {
-              order_id: results.data[i].Address,
-              age: results.data[i].Age
-            };
-           this.test.push(orderDetails);
-          }
-          // console.log(this.test);
-          console.log('Parsed: k', results.data);
+  //@ViewChild('fileImportInput', { static: false }) fileImportInput: any;
+  handleFileSelect($event : any) {
+    const files = $event.srcElement.files;
+    // Parse the file you want to select for the operation along with the configuration
+    this.ngxCsvParser.parse(files[0], { header: this.header, delimiter: ',' }).pipe().subscribe(
+      (result: any) => {
+        //console.log('Result', result);
+        this.csvRecords = result;
+        console.log(this.csvRecords[1][0])
+        this.soumettre(this.csvRecords);
+        for (let index = 1; index < this.csvRecords.length; index++){
+          const formData = new FormData()
+          //formData.append('email', this.csvRecords[index][0])
+          //formData.append('profil', '4')
+          console.log(formData)
+          console.log("ok")
+          this.apprenantService.addApprenant(formData).subscribe(
+            (response : any)=> {
+              console.log(response)
+              if (this.csvRecords.length -1) {
+                Swal.fire({
+                  position: 'top-end',
+                  icon: 'success',
+                  title: 'Groupe d\'apprenants ajouté avec succès',
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+              }
+            },
+            (error : any)=> console.log('error lors de l\'insertion')
+          )
         }
-      }); */
-    }
+
+      }, (error: NgxCSVParserError) => {
+        console.log('Error', error);
+      }
+    );
   }
 
 }

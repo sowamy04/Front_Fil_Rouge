@@ -34,7 +34,7 @@
       </tr>
     </thead>
     <tbody *ngFor="let app of datasource">
-      <tr *ngIf="app.firstConnexion == 1 && app.statut == 1">
+      <tr *ngIf="app.firstConnexion == 0 && app.statut == 1">
         <td> {{app.id }} </td>
         <td> {{app.prenom}} </td>
         <td> {{app.nom}} </td>
@@ -43,13 +43,13 @@
         <td>
           <ul class="list-inline m-0  d-flex justify-content-center">
             <li class="list-inline-item">
-                <button class="btn btn-primary btn-sm rounded-0 " type="button" data-toggle="tooltip" data-placement="top" title="Add"><i class="fa fa-table"></i></button>
+                <button [routerLink]="[app.id]" class="btn btn-primary btn-sm rounded-0 " type="button" data-toggle="tooltip" data-placement="top" title="Detail"><i class="fa fa-table"></i></button>
             </li>
             <li class="list-inline-item">
-                <button class="btn btn-success btn-sm rounded-0 " type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
+                <button [routerLink]="[app.id+'/update']"  class="btn btn-success btn-sm rounded-0 " type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
             </li>
             <li class="list-inline-item">
-                <button class="btn btn-danger btn-sm rounded-0 " type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                <button (click)="supprimer(app)" class="btn btn-danger btn-sm rounded-0 " type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
             </li>
         </ul>
         </td>

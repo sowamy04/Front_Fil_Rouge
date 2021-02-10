@@ -22,15 +22,19 @@ export class UserService {
     return this.http.get(this.url+'admin/users', this.httpOption);
   }
 
-  addAdmin(dataUser : any){
+  addUser(dataUser : any){
     return this.http.post(this.url+'admin/users', dataUser)
   }
 
-  addFormateur(dataUser : any){
-    return this.http.post(this.url+'formateurs', dataUser)
+  detailUser( id : number){
+    return this.http.get(this.url+'admin/users/'+id);
   }
 
-  addCm(dataUser : any){
-    return this.http.post(this.url+'cms', dataUser)
+  updateUser(id : number, dataUser : any){
+    return this.http.post(this.url+'admin/users/'+id+'?_method=PUT', dataUser)
+  }
+
+  deleteUser(id : number){
+    return this.http.delete(this.url+'admin/users/'+id)
   }
 }

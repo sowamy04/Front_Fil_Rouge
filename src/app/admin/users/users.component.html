@@ -19,7 +19,7 @@
           </tr>
         </thead>
         <tbody *ngFor="let user of datasource">
-          <tr *ngIf="user.profils.libelle != 'APPRENANT'">
+          <tr *ngIf="user.profils.libelle != 'APPRENANT' && user.statut == 1">
             <td> {{user.id}} </td>
             <td> <img src="{{ transform( user.photo) }}" width="50" height="50" alt=""> </td>
             <td> {{user.prenom}} </td>
@@ -30,10 +30,10 @@
             <td>
               <ul class="list-inline m-0  d-flex justify-content-center">
                 <li class="list-inline-item">
-                    <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
+                    <button [routerLink] = "[user.id+'/update']" class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
                 </li>
                 <li class="list-inline-item">
-                    <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                    <button (click)="supprimer(user)" class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
                 </li>
             </ul>
             </td>

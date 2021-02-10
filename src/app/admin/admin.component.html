@@ -36,9 +36,9 @@
               <input class="form-control" type="text" placeholder="Search" aria-label="Search">
             </div>
           <div>
-            <img class="img-circle img-rounded float-left" src="assets/images/logo_sa.png" height="40" alt="CoolBrand">
+            <img class="img-circle img-rounded float-left" src="data:image/jpg;base64,{{data.photo}}" style="border-radius: 50%;" height="40" alt="CoolBrand">
             <a routerLink="info-personnelles" class="btn nav-item nav-link" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Admin
+              {{data.prenom}}
             </a>
           </div>
           <a (click)="deconnexion()" class="btn nav-item nav-link">Se déconnecter</a>

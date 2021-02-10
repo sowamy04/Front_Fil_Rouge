@@ -9,6 +9,16 @@
       <div>
         <div class="card-header" style="background-color: #079480;">
             {{promo.libelle }}
+            <div class="float-right">
+              <ul class="list-inline m-0  d-flex justify-content-center">
+                <li class="list-inline-item">
+                    <button [routerLink] = "[promo.id+'/update']" class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
+                </li>
+                <li class="list-inline-item">
+                    <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
+                </li>
+            </ul>
+            </div>
         </div>
 
         <div class="card-body">
